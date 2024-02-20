@@ -9,7 +9,7 @@ let currentPage = 1;
 async function fetchData(page = 1) {
   try {
     const response = await axios.get(
-      `https://pixabay.com/api/?key=39663593-8d04c2e8107bf32f11cf1c5f8&q=${input.value}&image_type=photo&orientation=horizontal&safesearch=true&per_page=40&page=1`
+      `https://pixabay.com/api/?key=39663593-8d04c2e8107bf32f11cf1c5f8&q=${input.value}&image_type=photo&orientation=horizontal&safesearch=true&per_page=40&page=${page}`
     );
     const { hits } = response.data;
 
@@ -40,9 +40,6 @@ async function fetchData(page = 1) {
     console.error('Error fetching data:', error);
   }
 }
-const resetForm = () => {
-  gallery.innerHTML = '';
-};
 
 function loadMore() {
   currentPage++;
@@ -63,6 +60,6 @@ searchBtn.addEventListener('click', e => {
   e.preventDefault();
   currentPage = 1;
   fetchData();
-  resetForm();
+  gallery.innerHTML = '';
   loadBtn.style.display = 'block';
 });
