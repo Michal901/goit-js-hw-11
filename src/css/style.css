@@ -9,6 +9,7 @@
   flex-wrap: wrap;
   justify-content: center;
   gap: 30px;
+  margin: 80px 0 0;
 }
 .gallery img {
   width: 400px;
@@ -16,8 +17,11 @@
 }
 .search-wrapper {
   margin: 20px 0;
-  display: flex;
-  justify-content: center;
+  position: fixed;
+  left: 50%;
+  top: 0;
+  transform: translateX(-50%);
+  align-items: center;
 }
 .search-input {
   padding: 10px 20px;

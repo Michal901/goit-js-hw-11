@@ -1,4 +1,6 @@
 import axios from 'axios';
+import Notiflix from 'notiflix';
+
 const input = document.querySelector('.search-input');
 const gallery = document.querySelector('.gallery');
 const loadBtn = document.querySelector('.load-more');
@@ -35,9 +37,15 @@ async function fetchData(page = 1) {
       }
     );
 
+    // if (response.length > 0) {
+    //   loadBtn.style.display = 'block';
+    // }
+    console.log(response.data.hits[0].tags);
     gallery.insertAdjacentHTML('beforeend', markupArray.join(''));
   } catch (error) {
-    console.error('Error fetching data:', error);
+    Notiflix.Notify.failure(
+      'Sorry, there are no images matching your search query. Please try again.'
+    );
   }
 }
 
@@ -46,10 +54,10 @@ function loadMore() {
   fetchData(currentPage);
 }
 
-input.addEventListener('click', e => {
-  e.preventDefault();
-  input.value = '';
-});
+// input.addEventListener('click', e => {
+//   e.preventDefault();
+//   input.value = '';
+// });
 
 loadBtn.addEventListener('click', e => {
   e.preventDefault();
@@ -61,5 +69,4 @@ searchBtn.addEventListener('click', e => {
   currentPage = 1;
   fetchData();
   gallery.innerHTML = '';
-  loadBtn.style.display = 'block';
 });
