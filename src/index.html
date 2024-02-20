@@ -11,10 +11,13 @@
 
 <body>
     <form class="search-form" id="search-form">
-        <input type="text" name="searchQuery" autocomplete="off" placeholder="Search images..." />
+        <div class="search-wrapper">
+            <input class="search-input" type="text" name="searchQuery" autocomplete="off"
+                placeholder="Search images..." />
+            <button class="search-btn" type="submit">Search</button>
+        </div>
         <div class="gallery">
         </div>
-        <button type="submit">Search</button>
     </form>
     <button type="button" class="load-more">Load more</button>
 </body>
