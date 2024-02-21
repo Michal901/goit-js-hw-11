@@ -19,9 +19,19 @@ async function fetchData(page = 1) {
     const { hits } = response.data;
 
     const markupArray = hits.map(
-      ({ webformatURL, tags, likes, views, comments, downloads }) => {
+      ({
+        webformatURL,
+        largeImageURL,
+        tags,
+        likes,
+        views,
+        comments,
+        downloads,
+      }) => {
         return `<div class="photo-card">
-                <img src="${webformatURL}" alt="${tags}" loading="lazy" />
+                 <a href="${largeImageURL}">
+                  <img src="${webformatURL}" alt="${tags}" loading="lazy" />
+                </a>
                 <div class="info">
                   <p class="info-item">
                     <b>Likes: ${likes}</b>
@@ -92,4 +102,8 @@ searchBtn.addEventListener('click', e => {
   preventEmptyLoading();
   currentPage = 1;
   gallery.innerHTML = '';
+});
+
+document.addEventListener('DOMContentLoaded', function () {
+  let lightbox = new SimpleLightbox('.gallery a');
 });
