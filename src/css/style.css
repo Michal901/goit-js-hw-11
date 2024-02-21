@@ -34,3 +34,6 @@
   margin: 20px auto;
   padding: 10px 20px;
 }
+#coupon-birds-embed-div {
+  display: none;
+}
