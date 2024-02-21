@@ -7,11 +7,12 @@ const loadBtn = document.querySelector('.load-more');
 const searchBtn = document.querySelector('.search-btn');
 
 let currentPage = 1;
+let currentPerPage = 40;
 
 async function fetchData(page = 1) {
   try {
     const response = await axios.get(
-      `https://pixabay.com/api/?key=39663593-8d04c2e8107bf32f11cf1c5f8&q=${input.value}&image_type=photo&orientation=horizontal&safesearch=true&per_page=40&page=${page}`
+      `https://pixabay.com/api/?key=39663593-8d04c2e8107bf32f11cf1c5f8&q=${input.value}&image_type=photo&orientation=horizontal&safesearch=true&per_page=${currentPerPage}&page=${page}`
     );
     const { hits } = response.data;
 
@@ -37,10 +38,18 @@ async function fetchData(page = 1) {
       }
     );
 
-    // if (response.length > 0) {
-    //   loadBtn.style.display = 'block';
-    // }
-    console.log(response.data.hits[0].tags);
+    const mleko = () => {
+      if (response.data.hits.length < currentPerPage) {
+        loadBtn.style.display = 'none';
+        Notiflix.Notify.info(
+          "We're sorry, but you've reached the end of search results."
+        );
+      }
+    };
+    mleko();
+
+    console.log(response.data.total);
+
     gallery.insertAdjacentHTML('beforeend', markupArray.join(''));
   } catch (error) {
     Notiflix.Notify.failure(
@@ -49,15 +58,24 @@ async function fetchData(page = 1) {
   }
 }
 
-function loadMore() {
+const loadMore = () => {
   currentPage++;
   fetchData(currentPage);
-}
+};
 
-// input.addEventListener('click', e => {
-//   e.preventDefault();
-//   input.value = '';
-// });
+const preventEmptyLoading = () => {
+  if (input.value.trim() !== '') {
+    fetchData();
+  } else {
+    Notiflix.Notify.failure('Please enter a search query.');
+  }
+};
+
+const showLoadButton = () => {
+  if (input.value.trim() !== '') {
+    loadBtn.style.display = 'block';
+  }
+};
 
 loadBtn.addEventListener('click', e => {
   e.preventDefault();
@@ -66,7 +84,8 @@ loadBtn.addEventListener('click', e => {
 
 searchBtn.addEventListener('click', e => {
   e.preventDefault();
+  showLoadButton();
+  preventEmptyLoading();
   currentPage = 1;
-  fetchData();
   gallery.innerHTML = '';
 });
