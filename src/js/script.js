@@ -62,7 +62,7 @@ async function fetchData(page = 1) {
     };
     mleko();
 
-    console.log(response.data.total);
+    // console.log(response.data.total);
 
     gallery.insertAdjacentHTML('beforeend', markupArray.join(''));
   } catch (error) {
@@ -104,6 +104,6 @@ searchBtn.addEventListener('click', e => {
   gallery.innerHTML = '';
 });
 
-document.addEventListener('DOMContentLoaded', function () {
-  let lightbox = new SimpleLightbox('.gallery a');
+let lightbox = new SimpleLightbox('.photo-card', {
+  elements: '.photo-card a',
 });
