@@ -1,5 +1,7 @@
 import axios from 'axios';
 import Notiflix from 'notiflix';
+import SimpleLightbox from 'simplelightbox';
+import 'simplelightbox/dist/simple-lightbox.min.css';
 
 const input = document.querySelector('.search-input');
 const gallery = document.querySelector('.gallery');
@@ -37,6 +39,8 @@ async function fetchData(page = 1) {
               </div>`;
       }
     );
+
+    Notiflix.Notify.success(`Hooray! We found ${response.data.total} images.`);
 
     const mleko = () => {
       if (response.data.hits.length < currentPerPage) {
