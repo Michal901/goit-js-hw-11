@@ -20,6 +20,14 @@ async function fetchData(page = 1) {
     );
     const { hits, total } = response.data;
 
+    if (hits.length === 0) {
+      Notiflix.Notify.failure(
+        'Sorry, there are no images matching your search query. Please try again.'
+      );
+      loadBtn.style.display = 'none';
+      return;
+    }
+
     // Tworzenie markupu dla każdego zdjęcia
     const markupArray = hits.map(
       ({
