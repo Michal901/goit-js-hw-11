@@ -9,8 +9,11 @@ const input = document.querySelector('.search-input');
 const gallery = document.querySelector('.gallery');
 const loadBtn = document.querySelector('.load-more');
 const searchBtn = document.querySelector('.search-btn');
+
 let currentPage = 1;
-const itemsPerPage = 40;
+let itemsPerPage = 40;
+
+let lightbox = null;
 
 // Funkcja pobierająca dane z serwera Pixabay
 async function fetchData(page = 1) {
@@ -97,7 +100,7 @@ const preventEmptyLoading = () => {
 // Inicjalizacja lightboxa
 const initializeLightbox = () => {
   const galleryContainer = document.querySelector('.gallery');
-  if (galleryContainer) {
+  if (galleryContainer && !lightbox) {
     lightbox = new SimpleLightbox('.gallery a', { refresh: true });
   }
 };
