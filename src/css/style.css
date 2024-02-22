@@ -14,21 +14,21 @@
 .gallery img {
   width: 400px;
   height: 300px;
+  border-radius: 15%;
 }
-.search-wrapper {
-  margin: 20px 0;
-  position: fixed;
-  left: 50%;
-  top: 0;
-  transform: translateX(-50%);
-  align-items: center;
-}
+
 .search-input {
-  padding: 10px 20px;
+  position: fixed;
+  left: 53%;
+  top: 10px;
+  font-size: 20px;
+  transform: translateX(-50%);
+  padding: 12px 20px;
+  border: 1px solid #6b6b6b;
+  border-radius: 20px;
+  width: 400px;
 }
-.search-btn {
-  padding: 10px 20px;
-}
+
 .load-more {
   display: none;
   margin: 20px auto;
@@ -38,6 +38,44 @@
   display: none;
 }
 
-/* .sl-overlay {
-  display: none !important;
-} */
+.ripple-btn {
+  text-decoration: none;
+  font-weight: 500;
+  position: fixed;
+  left: 69%;
+  top: 10px;
+  transform: translateX(-50%);
+  display: block;
+  padding: 14px 20px;
+  overflow: hidden;
+  border: none;
+  border-radius: 18px;
+  background-color: transparent;
+}
+.fa {
+  position: relative;
+  color: black;
+  font-size: 20px;
+  z-index: 999;
+}
+.ripple-div {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  border-radius: 50rem;
+  background-color: #1cbfff;
+  animation: rippleEffect 1s linear infinite;
+}
+
+@keyframes rippleEffect {
+  from {
+    width: 0;
+    height: 0;
+    opacity: 0.5;
+  }
+  to {
+    width: 500px;
+    height: 500px;
+    opacity: 0;
+  }
+}

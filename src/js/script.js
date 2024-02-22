@@ -3,6 +3,7 @@ import axios from 'axios';
 import Notiflix from 'notiflix';
 import SimpleLightbox from 'simplelightbox';
 import 'simplelightbox/dist/simple-lightbox.min.css';
+// import { buttonEffect } from './buttonEffect';
 
 // Deklaracja zmiennych globalnych
 const input = document.querySelector('.search-input');
@@ -16,13 +17,14 @@ let itemsPerPage = 40;
 let lightbox = null;
 
 // Funkcja pobierająca dane z serwera Pixabay
-async function fetchData(page = 1) {
+const fetchData = async (page = 1) => {
   try {
     const response = await axios.get(
       `https://pixabay.com/api/?key=39663593-8d04c2e8107bf32f11cf1c5f8&q=${input.value}&image_type=photo&orientation=horizontal&safesearch=true&per_page=${itemsPerPage}&page=${page}`
     );
     const { hits, total } = response.data;
 
+    // Sprawdzanie czy pobrano wszystkie dostępne wyniki
     if (hits.length === 0) {
       Notiflix.Notify.failure(
         'Sorry, there are no images matching your search query. Please try again.'
@@ -79,7 +81,7 @@ async function fetchData(page = 1) {
     );
     loadBtn.style.display = 'none';
   }
-}
+};
 
 // Funkcja do ładowania kolejnych wyników
 const loadMore = () => {
@@ -121,6 +123,7 @@ loadBtn.addEventListener('click', e => {
 searchBtn.addEventListener('click', e => {
   e.preventDefault();
   preventEmptyLoading();
+  // buttonEffect();
   currentPage = 1;
   gallery.innerHTML = '';
 });
