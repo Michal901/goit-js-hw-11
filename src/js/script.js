@@ -50,10 +50,18 @@ const fetchData = async (page = 1) => {
                   <img src="${webformatURL}" alt="${tags}" loading="lazy" />
                 </a>
                 <div class="info">
-                  <p class="info-item"><b>Likes: ${likes}</b></p>
-                  <p class="info-item"><b>Views: ${views}</b></p>
-                  <p class="info-item"><b>Comments: ${comments}</b></p>
-                  <p class="info-item"><b>Downloads: ${downloads}</b></p>
+                  <p class="info-item likes">
+                    <i class="fa-solid fa-thumbs-up"></i> ${likes}
+                  </p>
+                  <p class="info-item views">
+                    <i class="fa-solid fa-eye"></i> ${views}
+                    </p>
+                  <p class="info-item comments">
+                    <i class="fa-solid fa-comment"></i> ${comments}
+                    </p>
+                  <p class="info-item downloads">
+                    <i class="fa-solid fa-download"></i> ${downloads}
+                    </p>
                 </div>
               </div>`;
       }
