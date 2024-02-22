@@ -1,23 +1,31 @@
 export const buttonEffect = () => {
   const searchBtn = document.querySelectorAll('.search-btn');
 
+  const btnAnimation = e => {
+    const top = e.clientY;
+    const left = e.clientX;
+    // pozycja, w którą klikamy
+
+    const btnTopPosition = e.target.offsetTop;
+    const btnLeftPosition = e.target.offsetLeft;
+    // pozycja przycisku
+
+    const insideBtnTop = top - btnTopPosition;
+    const insideBtnLeft = left - btnLeftPosition;
+
+    const circle = document.createElement('span');
+    circle.classList.add('circle');
+    circle.style.top = insideBtnTop + 'px';
+    circle.style.left = insideBtnLeft + 'px';
+
+    e.target.appendChild(circle);
+
+    setTimeout(() => {
+      circle.remove();
+    }, 600);
+  };
+
   searchBtn.forEach(button => {
-    button.addEventListener('click', e => {
-      const ANIMATION_SPEED = 500;
-
-      let x = e.clientX - e.target.offsetLeft;
-      let y = e.clientY - e.target.offsetTop;
-
-      const ripple = document.createElement('div');
-      ripple.classList.add('ripple-div');
-
-      ripple.style.left = x + 'px';
-      ripple.style.top = y + 'px';
-      button.appendChild(ripple);
-
-      setTimeout(() => {
-        ripple.remove();
-      }, ANIMATION_SPEED);
-    });
+    button.addEventListener('click', btnAnimation);
   });
 };

@@ -4,7 +4,7 @@ import Notiflix from 'notiflix';
 import SimpleLightbox from 'simplelightbox';
 import 'simplelightbox/dist/simple-lightbox.min.css';
 import { initializeLightbox, refreshLightbox } from './lightbox.js';
-// import { buttonEffect } from './buttonEffect';
+import { buttonEffect } from './buttonEffect';
 
 // Deklaracja zmiennych globalnych
 const input = document.querySelector('.search-input');
@@ -117,7 +117,7 @@ loadBtn.addEventListener('click', e => {
 searchBtn.addEventListener('click', e => {
   e.preventDefault();
   preventEmptyLoading();
-  // buttonEffect();
+  buttonEffect();
   currentPage = 1;
   gallery.innerHTML = '';
 });
