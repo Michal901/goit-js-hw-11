@@ -1,4 +1,3 @@
-// Importowanie wymaganych modułów
 import axios from 'axios';
 import Notiflix from 'notiflix';
 import SimpleLightbox from 'simplelightbox';
@@ -6,7 +5,6 @@ import 'simplelightbox/dist/simple-lightbox.min.css';
 import { initializeLightbox, refreshLightbox } from './lightbox.js';
 import { buttonEffect } from './buttonEffect';
 
-// Deklaracja zmiennych globalnych
 const input = document.querySelector('.search-input');
 const gallery = document.querySelector('.gallery');
 const loadBtn = document.querySelector('.load-more');
