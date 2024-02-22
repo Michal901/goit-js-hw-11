@@ -3,6 +3,7 @@ import axios from 'axios';
 import Notiflix from 'notiflix';
 import SimpleLightbox from 'simplelightbox';
 import 'simplelightbox/dist/simple-lightbox.min.css';
+import { initializeLightbox, refreshLightbox } from './lightbox.js';
 // import { buttonEffect } from './buttonEffect';
 
 // Deklaracja zmiennych globalnych
@@ -74,6 +75,7 @@ const fetchData = async (page = 1) => {
 
     // Inicjalizacja lightboxa
     initializeLightbox();
+    refreshLightbox();
   } catch (error) {
     // Obsługa błędów
     Notiflix.Notify.failure(
@@ -96,14 +98,6 @@ const preventEmptyLoading = () => {
     fetchData();
   } else {
     Notiflix.Notify.failure('Please enter a search query.');
-  }
-};
-
-// Inicjalizacja lightboxa
-const initializeLightbox = () => {
-  const galleryContainer = document.querySelector('.gallery');
-  if (galleryContainer && !lightbox) {
-    lightbox = new SimpleLightbox('.gallery a', { refresh: true });
   }
 };
 
