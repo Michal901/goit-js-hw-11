@@ -46,7 +46,7 @@ const fetchData = async (page = 1) => {
         downloads,
       }) => {
         return `<div class="photo-card">
-                 <a href="${largeImageURL}">
+                 <a class="gallery__link" href="${largeImageURL}">
                   <img src="${webformatURL}" alt="${tags}" loading="lazy" />
                 </a>
                 <div class="info">
