@@ -10,12 +10,12 @@
   flex-wrap: wrap;
   justify-content: center;
   gap: 30px;
-  margin: 100px 0 0;
+  margin: 100px 0 50px;
 }
 .gallery img {
   width: 400px;
   height: 300px;
-  border-radius: 15%;
+  border-radius: 15% 15% 5px 5px;
 }
 .search-wrapper {
   position: fixed;
@@ -40,6 +40,14 @@
   display: none;
   margin: 20px auto;
   padding: 10px 20px;
+  background-color: transparent;
+  border: 1px solid #6b6b6b;
+  transition: 250ms;
+}
+.load-more:hover {
+  background-color: cadetblue;
+  color: white;
+  border: 1px solid cadetblue;
 }
 
 .search-btn {
@@ -77,7 +85,10 @@
   font-size: 20px;
   z-index: 1;
 }
-
+.photo-card {
+  background-color: #eee;
+  border-radius: 15% 15% 5px 5px;
+}
 #coupon-birds-embed-div {
   display: none;
 }

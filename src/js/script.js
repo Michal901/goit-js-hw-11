@@ -97,7 +97,11 @@ const preventEmptyLoading = () => {
     loadBtn.style.display = 'block';
     fetchData();
   } else {
+    if (gallery.innerHTML === '') {
+      loadBtn.style.display = 'none';
+    }
     Notiflix.Notify.failure('Please enter a search query.');
+    loadBtn.style.display = 'none';
   }
 };
 
@@ -111,6 +115,7 @@ gallery.addEventListener('click', e => {
 loadBtn.addEventListener('click', e => {
   e.preventDefault();
   loadMore();
+  console.log(input.value);
 });
 
 // Nasłuchiwanie na kliknięcie w przycisk "Search"
